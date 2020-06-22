@@ -1,0 +1,46 @@
+#spring:
+#  application:
+#    name: coupon-eureka
+#  profiles: server1
+#server:
+#  port: 8000
+#eureka:
+#  instance:
+#    hostname: server1
+#    # java -jar coupon-eureka-1.0-SNAPSHOT.jar --spring.profiles.active=server1
+#    # 不允许使用多个ip地址启动多个实例，如果单机挂了，单机挂了就全都挂了
+#    prefer-ip-address: false
+#  client:
+#    service-url:
+#      defaultZone: http://server2:8001/eureka/,http://server3:8002/eureka/
+#
+#---
+#spring:
+#  application:
+#    name: coupon-eureka
+#  profiles: server2
+#server:
+#  port: 8001
+#eureka:
+#  instance:
+#    hostname: server2
+#    prefer-ip-address: false
+#  client:
+#    service-url:
+#      defaultZone: http://server1:8000/eureka/,http://server3:8002/eureka/
+#
+#---
+#spring:
+#  application:
+#    name: coupon-eureka
+#  profiles: server3
+#server:
+#  port: 8002
+#eureka:
+#  instance:
+#    hostname: server3
+#    prefer-ip-address: false
+#  client:
+#    service-url:
+#      # 实现相互Eureka实例间注册
+#      defaultZone: http://server1:8000/eureka/,http://server2:8001/eureka/

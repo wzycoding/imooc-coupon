@@ -1,0 +1,10 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: coupon-gateway
+eureka:
+  client:
+    service-url:
+      # 需要向哪一个Eureka Server做服务发现或服务注册
+      defaultZone: http://server1:8000/eureka/
