@@ -47,7 +47,7 @@ public class CommonResponseDataAdvice implements ResponseBodyAdvice<Object> {
     }
 
     /**
-     * 处理响应信息
+     * 响应返回之前的处理
      * @param o 方法返回值
      * @param methodParameter
      * @param mediaType
