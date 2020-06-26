@@ -44,6 +44,15 @@ public class TemplateRule {
     private String weight;
 
     /**
+     * 对属性进行校验
+     */
+    public boolean validate() {
+        return expiration.validate() && discount.validate()
+                && limitation > 0 && usage.validate()
+                && StringUtils.isNotBlank(weight);
+    }
+
+    /**
      * 有效期限的规则
      */
     @Data
