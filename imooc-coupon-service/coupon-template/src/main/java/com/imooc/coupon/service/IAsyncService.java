@@ -14,5 +14,5 @@ public interface IAsyncService {
      * <h2>根据模板异步创建优惠券码</h2>
      * @param template {@link CouponTemplate} 优惠券模板实体
      */
-    void asyncConstructCounponByTemplate(CouponTemplate template);
+    void asyncConstructCouponByTemplate(CouponTemplate template);
 }
