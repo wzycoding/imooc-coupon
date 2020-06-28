@@ -5,6 +5,7 @@ import com.imooc.coupon.constant.CouponCategory;
 import com.imooc.coupon.constant.DistributeTarget;
 import com.imooc.coupon.constant.ProductLine;
 import com.imooc.coupon.converter.CouponCategoryConverter;
+import com.imooc.coupon.converter.DistributeTargetConverter;
 import com.imooc.coupon.converter.ProductLineConverter;
 import com.imooc.coupon.converter.RuleConverter;
 import com.imooc.coupon.serialization.CouponTemplateSerialize;
@@ -33,7 +34,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "coupon-template")
+@Table(name = "coupon_template")
 @JsonSerialize(using = CouponTemplateSerialize.class)
 public class CouponTemplate implements Serializable {
     /**
@@ -115,7 +116,7 @@ public class CouponTemplate implements Serializable {
      * 目标用户
      */
     @Column(name = "target", nullable = false)
-    @Convert
+    @Convert(converter = DistributeTargetConverter.class)
     private DistributeTarget target;
 
     /**

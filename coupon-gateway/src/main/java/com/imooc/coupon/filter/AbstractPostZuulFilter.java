@@ -1,6 +1,5 @@
 package com.imooc.coupon.filter;
 
-import com.netflix.zuul.ZuulFilter;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 
 /**

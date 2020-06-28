@@ -69,7 +69,7 @@ public class TemplateRequest {
      * 属性校验方法
      */
     public boolean validate() {
-        boolean stringValid = StringUtils.isNoneEmpty(name)
+        boolean stringValid = StringUtils.isNotEmpty(name)
                 && StringUtils.isNotEmpty(logo)
                 && StringUtils.isNotEmpty(desc);
         boolean enumValid = null != CouponCategory.of(category)
