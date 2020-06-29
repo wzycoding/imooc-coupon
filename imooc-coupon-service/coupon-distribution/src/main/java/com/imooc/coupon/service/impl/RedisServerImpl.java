@@ -49,7 +49,7 @@ public class RedisServerImpl implements IRedisService {
                 .collect(Collectors.toList());
         if(CollectionUtils.isEmpty(couponStrs)) {
             saveEmptyCouponListToCache(userId, Collections.singletonList(status));
-            return Collections.EMPTY_LIST;
+            return Collections.emptyList();
         }
 
         return couponStrs.stream().map(cs -> JSON.parseObject(cs, Coupon.class))
