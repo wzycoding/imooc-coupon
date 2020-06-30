@@ -60,13 +60,15 @@ public class TemplateRule {
     @NoArgsConstructor
     public static class Expiration {
 
-        /** 有效期规则, 对应PeriodType的code字段 **/
+        /** 有效期规则, 对应PeriodType的code字段 （针对优惠券） **/
         private Integer period;
 
-        /** 只对变动类型的有效期有效: 有效间隔 **/
+        /** 只对变动类型的有效期有效: 有效间隔 （针对优惠券）
+         * 这里要看优惠券领取的时间**/
         private Integer gap;
 
-        /** 优惠券模板的实效日期（时间戳） **/
+        /** 优惠券[模板]的失效日期（时间戳）注意这里是优惠券模板，不是优惠券本身
+         * 如果是固定时间过期，那么对优惠券也有效 **/
         private Long deadLine;
 
         boolean validate() {

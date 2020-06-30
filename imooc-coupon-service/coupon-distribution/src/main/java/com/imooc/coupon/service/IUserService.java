@@ -36,7 +36,8 @@ public interface IUserService {
      * @param userId 用户id
      * @return {@link CouponTemplateSDK}s
      */
-    List<CouponTemplateSDK> findAvailableTemplate(Long userId);
+    List<CouponTemplateSDK> findAvailableTemplate(Long userId)
+            throws CouponException;
 
 
     /**
@@ -44,7 +45,7 @@ public interface IUserService {
      * @param request {@link AcquireTemplateRequest}
      * @return {@link Coupon}
      */
-    Coupon AcquireTemplate(AcquireTemplateRequest request)
+    Coupon acquireTemplate(AcquireTemplateRequest request)
             throws CouponException;
 
     /**

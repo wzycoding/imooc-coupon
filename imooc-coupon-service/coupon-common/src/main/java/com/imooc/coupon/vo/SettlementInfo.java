@@ -48,6 +48,9 @@ public class SettlementInfo {
      */
     private Double cost;
 
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class CouponAndTemplateInfo {
         /**
          * coupon的主键
