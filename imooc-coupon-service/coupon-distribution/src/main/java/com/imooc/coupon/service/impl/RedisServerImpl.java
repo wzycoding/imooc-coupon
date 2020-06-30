@@ -45,7 +45,7 @@ public class RedisServerImpl implements IRedisService {
         // couponStr有可能为空
         List<String> couponStrs = redisTemplate.opsForHash().values(redisKey)
                 .stream()
-                .map(o -> Objects.toString(0, null))
+                .map(o -> Objects.toString(o, null))
                 .collect(Collectors.toList());
         if(CollectionUtils.isEmpty(couponStrs)) {
             saveEmptyCouponListToCache(userId, Collections.singletonList(status));

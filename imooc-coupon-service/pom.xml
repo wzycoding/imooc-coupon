@@ -15,6 +15,7 @@
         <module>coupon-common</module>
         <module>coupon-template</module>
         <module>coupon-distribution</module>
+        <module>coupon-settlement</module>
     </modules>
 
     <!--需要显式指定pom类型默认jar-->
