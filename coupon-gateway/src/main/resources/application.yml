@@ -18,6 +18,13 @@ zuul:
       serviceId: eureka-client-coupon-template
       # 是否跳过前缀
       strip-prefix: false
+    # 优惠券分发微服务路由配置定义
+    distribution:
+      path: /coupon-distribution/**
+      # 向哪个服务进行转发
+      serviceId: eureka-client-coupon-distribution
+      # 是否跳过前缀
+      strip-prefix: false
     host:
       # 连接微服务超时时间
       connect-timeout-millis: 15000
