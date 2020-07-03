@@ -66,13 +66,13 @@ public class CouponClassify {
 
             // 状态如果已使用直接加入集合
             if (c.getStatus() == CouponStatus.USABLE) {
-                used.add(c);
+                usable.add(c);
                 //如果过期则要考虑本身状态，和当前判断是否过期，存到过期优惠券列表中
             } else if (c.getStatus() == CouponStatus.EXPIRED || isTimeExpire) {
                 expired.add(c);
             } else {
                 // 最后一种情况剩下的直接保存到可使用的优惠券列
-                usable.add(c);
+                used.add(c);
             }
 
         });

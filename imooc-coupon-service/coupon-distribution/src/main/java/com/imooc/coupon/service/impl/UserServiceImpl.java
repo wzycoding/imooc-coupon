@@ -340,7 +340,7 @@ public class UserServiceImpl implements IUserService {
                     info.getUserId(), settleCoupons, CouponStatus.USABLE.getCode());
             // 更新db
             kafkaTemplate.send(Constant.TOPIC,
-                    JSON.toJSONString(new CouponKafkaMessage(CouponStatus.USABLE.getCode(),
+                    JSON.toJSONString(new CouponKafkaMessage(CouponStatus.USED.getCode(),
                             settleCoupons.stream().map(Coupon::getId).collect(Collectors.toList()))));
         }
         return processedInfo;

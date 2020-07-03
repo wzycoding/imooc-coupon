@@ -40,7 +40,7 @@ public class KafkaServiceImpl implements IKafkaService {
     }
 
     /**
-     * 修复Kafka消息
+     * 接收Kafka消息
      * 消息被序列化到record
      * @param record {@link ConsumerRecord}
      */
