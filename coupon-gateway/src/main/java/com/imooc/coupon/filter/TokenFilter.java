@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
  * @Date 2020/6/22 23:22
  * @Version V1.0
  **/
-@Component
 @Slf4j
+//@Component
 public class TokenFilter extends AbstractPreZuulFilter{
 
 

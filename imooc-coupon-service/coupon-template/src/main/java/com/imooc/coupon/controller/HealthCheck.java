@@ -43,6 +43,7 @@ public class HealthCheck {
     /**
      * 健康检查接口
      * http://localhost:7001/coupon-template/health
+     * 网关：http://localhost:9000/imooc/coupon-template/health
      */
     @GetMapping("/health")
     public String health() {
