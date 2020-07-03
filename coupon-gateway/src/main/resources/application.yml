@@ -25,11 +25,18 @@ zuul:
       serviceId: eureka-client-coupon-distribution
       # 是否跳过前缀
       strip-prefix: false
-    host:
-      # 连接微服务超时时间
-      connect-timeout-millis: 15000
-      # socket超时时间
-      socket-time-millis: 60000
+    # 优惠券结算微服务路由配置定义
+    settlement:
+      path: /coupon-settlement/**
+      # 向哪个服务进行转发
+      serviceId: eureka-client-coupon-settlement
+      # 是否跳过前缀
+      strip-prefix: false
+  host:
+    # 连接微服务超时时间
+    connect-timeout-millis: 15000
+    # socket超时时间
+    socket-time-millis: 60000
 # 负载均衡
 ribbon:
   # 连接超时时间

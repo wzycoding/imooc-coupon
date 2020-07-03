@@ -44,7 +44,7 @@ public class ManJianZheKouExecutor extends AbstractExecutor
                 settlement, goodsSum
         );
 
-        if (null == probability) {
+        if (null != probability) {
             log.debug("ManJian And ZheKou Is Not Match To GoodsType");
         }
 
