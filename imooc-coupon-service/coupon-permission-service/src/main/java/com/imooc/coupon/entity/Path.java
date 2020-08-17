@@ -9,8 +9,8 @@ import javax.persistence.*;
 /**
  * 描述：Path实体类
  *
- * @Author wzy
- * @Date 2020/7/17 14:03
+ * @author wzy
+ * @date 2020/7/17 14:03
  * @Version V1.0
  **/
 @Data
@@ -63,7 +63,7 @@ public class Path {
     private String opMode;
 
     /**
-     * 不带主键的构造函数
+     * <h1>不带主键的构造函数</h1>
      */
     public Path(String pathPattern, String httpMethod, String pathName,
                 String serviceName, String opMode) {

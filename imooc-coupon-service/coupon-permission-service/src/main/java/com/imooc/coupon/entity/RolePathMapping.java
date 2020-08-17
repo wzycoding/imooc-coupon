@@ -9,8 +9,8 @@ import javax.persistence.*;
 /**
  * 描述：角色路径映射实体类
  *
- * @Author wzy
- * @Date 2020/7/17 14:33
+ * @author wzy
+ * @date 2020/7/17 14:33
  * @Version V1.0
  **/
 @Data
