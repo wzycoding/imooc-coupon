@@ -1,4 +1,4 @@
-﻿package com.imooc.coupon.controller;
+package com.imooc.coupon.controller;
 
 import com.imooc.coupon.annotation.IgnoreResponseAdvice;
 import com.imooc.coupon.service.PathService;

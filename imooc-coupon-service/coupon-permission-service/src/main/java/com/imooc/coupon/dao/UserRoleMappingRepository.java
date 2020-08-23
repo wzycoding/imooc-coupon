@@ -1,10 +1,10 @@
-锘縫ackage com.imooc.coupon.dao;
+package com.imooc.coupon.dao;
 
 import com.imooc.coupon.entity.UserRoleMapping;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * 鐢ㄦ埛瑙掕壊鏄犲皠琛╠ao
+ * 用户角色映射表dao
  *
  * @author wzy
  * @date 2020-08-17 0:30
@@ -12,10 +12,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface UserRoleMappingRepository
         extends JpaRepository<UserRoleMapping, Long> {
     /**
-     * 閫氳繃鐢ㄦ埛id鏌ユ壘璁板綍
+     * 通过用户id查找记录
      *
-     * @param userId 鐢ㄦ埛id
-     * @return 杩斿洖璁板綍
+     * @param userId 用户id
+     * @return 返回记录
      */
     UserRoleMapping findByUserId(Long userId);
 }

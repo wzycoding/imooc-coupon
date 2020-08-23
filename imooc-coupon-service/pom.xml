@@ -18,6 +18,7 @@
         <module>coupon-settlement</module>
         <module>coupon-permission-sdk</module>
         <module>coupon-permission-service</module>
+        <module>coupon-permission-detector</module>
     </modules>
 
     <!--需要显式指定pom类型默认jar-->

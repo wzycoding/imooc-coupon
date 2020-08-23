@@ -1,4 +1,4 @@
-﻿package com.imooc.coupon.constant;
+package com.imooc.coupon.constant;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

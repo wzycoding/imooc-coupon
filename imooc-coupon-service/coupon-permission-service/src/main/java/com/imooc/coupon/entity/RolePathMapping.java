@@ -17,7 +17,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "role_path_mapping")
+@Table(name = "coupon_role_path_mapping")
 public class RolePathMapping {
 
     /**

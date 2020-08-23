@@ -1,4 +1,4 @@
-﻿package com.imooc.coupon.dao;
+package com.imooc.coupon.dao;
 
 import com.imooc.coupon.entity.Path;
 import org.springframework.data.jpa.repository.JpaRepository;
