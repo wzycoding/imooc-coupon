@@ -50,6 +50,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
+                <!-- 添加这个不需要我们自己去进行版本控制 -->
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -57,7 +58,7 @@
         </dependencies>
     </dependencyManagement>
 
-    <!-- 配置远程仓库:不在maven的中央仓库中 -->
+    <!-- 配置远程仓库:不在maven的中央仓库中，可以找到SpringCloud 依赖包-->
     <repositories>
         <repository>
             <id>spring-milestones</id>
