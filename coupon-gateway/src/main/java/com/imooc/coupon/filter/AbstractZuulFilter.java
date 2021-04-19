@@ -7,9 +7,9 @@ import com.netflix.zuul.exception.ZuulException;
 /**
  * 描述：通用的抽象过滤器类
  *
- * @Author wzy
- * @Date 2020/6/22 16:28
- * @Version V1.0
+ * @author wzy
+ * @date 2020/6/22 16:28
+ * @version V1.0
  **/
 public abstract class AbstractZuulFilter extends ZuulFilter {
 
@@ -61,9 +61,10 @@ public abstract class AbstractZuulFilter extends ZuulFilter {
 
     /**
      * 执行成功方法
-     * @return
      */
     Object success() {
+        //set这个是为了让shouldFilter()方法可以直接取到值，来判断是否终止过滤器链
+        //数据是存在TheadLocal当中，是线程安全的
         context.set(NEXT, true);
         return null;
     }

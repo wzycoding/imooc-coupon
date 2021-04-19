@@ -12,9 +12,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * 组合了服务发现注解 @EnableDiscoveryClient
  * 组合了熔断注解 @EnableCircuitBreaker
  *
- * @Author wzy
- * @Date 2020/6/22 16:08
- * @Version V1.0
+ * @author wzy
+ * @date 2020/6/22 16:08
+ * @version V1.0
  **/
 @SpringCloudApplication
 @EnableFeignClients

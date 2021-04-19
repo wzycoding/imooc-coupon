@@ -6,9 +6,9 @@ import org.springframework.stereotype.Component;
 /**
  * 描述：在过滤器中存储客户端发起请求的时间戳
  *
- * @Author wzy
- * @Date 2020/6/23 8:27
- * @Version V1.0
+ * @author wzy
+ * @date 2020/6/23 8:27
+ * @version V1.0
  **/
 @Slf4j
 @Component
