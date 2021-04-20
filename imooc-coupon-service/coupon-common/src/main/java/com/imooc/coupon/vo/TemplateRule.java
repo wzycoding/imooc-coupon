@@ -61,7 +61,7 @@ public class TemplateRule {
     public static class Expiration {
 
         /**
-         * 有效期规则, 对应PeriodType的code字段 （针对优惠券）
+         * 有效期规则, 对应PeriodType枚举的code字段 （针对优惠券）
          **/
         private Integer period;
 
@@ -73,10 +73,18 @@ public class TemplateRule {
 
         /**
          * 优惠券[模板]的失效日期（时间戳）注意这里是优惠券模板，不是优惠券本身
-         * 如果是固定时间过期，那么对优惠券也有效
+         * 如果是固定时间过期，那么对优惠券也有效，是优惠券模板也同时是优惠券的过期时间
+         * <p>
+         * 如果是变动日期的那优惠券的失效日期是：领取日期 + gap = 优惠券的过期时间
+         * 如果是变动日期这个失效日期代表的优惠券模板的失效日期。
          **/
         private Long deadLine;
 
+        /**
+         * 验证对象是否有效
+         *
+         * @return 是否有效
+         */
         boolean validate() {
             // 最简化校验
             return null != PeriodType.of(period) && gap > 0 && deadLine > 0;
@@ -98,7 +106,7 @@ public class TemplateRule {
         private Integer quota;
 
         /**
-         * 基准：需要满多少才可用
+         * 基准：需要满多少才可用，只有折扣和满减可以用上
          */
         private Integer base;
 
@@ -141,7 +149,6 @@ public class TemplateRule {
                     && StringUtils.isNotBlank(city)
                     && StringUtils.isNotBlank(goodsType);
         }
-
     }
 
 }

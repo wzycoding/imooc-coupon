@@ -22,7 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * 描述：优惠券模板实体类定义：基础属性 + 规则属性
+ * <h1>优惠券模板实体类定义：基础属性 + 规则属性</h1>
  * <p>
  * Transient 不映射到数据库表中的字段
  *
