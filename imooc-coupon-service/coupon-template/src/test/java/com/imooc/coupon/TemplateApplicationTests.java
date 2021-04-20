@@ -8,9 +8,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 /**
  * 描述：模板微服务测试程序
  *
- * @Author wzy
- * @Date 2020/6/28 10:41
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/28 10:41
  **/
 @SpringBootTest
 @RunWith(SpringRunner.class)

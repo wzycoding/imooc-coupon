@@ -9,9 +9,9 @@ import java.util.stream.Stream;
 /**
  * 描述：用户优惠券状态
  *
- * @Author wzy
- * @Date 2020/6/28 15:03
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/28 15:03
  **/
 @Getter
 @AllArgsConstructor

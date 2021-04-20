@@ -12,9 +12,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 /**
  * 描述：用户服务功能测试用例
  *
- * @Author wzy
- * @Date 2020/7/1 0:01
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/7/1 0:01
  **/
 @SpringBootTest
 @RunWith(SpringRunner.class)

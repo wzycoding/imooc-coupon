@@ -18,11 +18,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 描述：优惠券模板相关的功能控制器
+ * <h1>描述：优惠券模板相关的功能控制器</h1>
  *
- * @Author wzy
- * @Date 2020/6/27 23:54
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/27 23:54
  **/
 @Slf4j
 @RestController

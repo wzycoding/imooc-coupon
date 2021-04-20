@@ -7,9 +7,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 /**
  * 描述：优惠券结算微服务启动入口
  *
- * @Author wzy
- * @Date 2020/7/1 1:00
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/7/1 1:00
  **/
 @EnableEurekaClient
 @SpringBootApplication

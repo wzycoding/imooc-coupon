@@ -21,9 +21,10 @@ import java.util.Optional;
  * 描述：Kafka相关的服务接口实现
  * 核心思想，将Cache中的coupon的状态变化同步到DB中
  * 先修改cache然后在投放到kafka再去修改数据库优惠券状态
- * @Author wzy
- * @Date 2020/6/29 14:05
- * @Version V1.0
+ *
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/29 14:05
  **/
 @Slf4j
 @Service
@@ -42,6 +43,7 @@ public class KafkaServiceImpl implements IKafkaService {
     /**
      * 接收Kafka消息
      * 消息被序列化到record
+     *
      * @param record {@link ConsumerRecord}
      */
     @Override
@@ -90,14 +92,15 @@ public class KafkaServiceImpl implements IKafkaService {
      * 修改优惠券状态为已过期
      */
     private void processExpiredCoupons(CouponKafkaMessage message,
-                                    CouponStatus status) {
+                                       CouponStatus status) {
         processCouponsByStatus(message, status);
     }
 
     /**
      * 根据状态去处理优惠券信息
+     *
      * @param message kafkaMsg
-     * @param status 优惠券状态
+     * @param status  优惠券状态
      */
     private void processCouponsByStatus(CouponKafkaMessage message,
                                         CouponStatus status) {

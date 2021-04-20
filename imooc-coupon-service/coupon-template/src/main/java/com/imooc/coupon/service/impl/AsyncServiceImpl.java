@@ -13,16 +13,19 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
  * 描述：异步服务实现
  *
- * @Author wzy
- * @Date 2020/6/27 15:15
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/27 15:15
  **/
 @Slf4j
 @Service
@@ -79,9 +82,9 @@ public class AsyncServiceImpl implements IAsyncService {
      * 前四位：产品线 + 类型
      * 中间六位：日期的随机（200909）
      * 后八位：0-9的随机数构成
+     *
      * @param template
      * @return Set<String> 与template.count相同个数的优惠券码
-     *
      */
     @SuppressWarnings("all")
     public Set<String> buildCouponCode(CouponTemplate template) {
@@ -113,14 +116,15 @@ public class AsyncServiceImpl implements IAsyncService {
 
     /**
      * 构造优惠券码的后十四位
+     *
      * @param date 创建优惠券的日期
      * @return 十四位优惠券码
      */
     private String buildCouponCodeSuffix14(String date) {
-        char [] bases = new char[]{'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+        char[] bases = new char[]{'1', '2', '3', '4', '5', '6', '7', '8', '9'};
         // 中间六位，将字符转换为char，获取日期里所有字符
         List<Character> chars = date.chars()
-                .mapToObj(e -> (char)e).collect(Collectors.toList());
+                .mapToObj(e -> (char) e).collect(Collectors.toList());
 
         // 洗牌算法非常高效
         Collections.shuffle(chars);

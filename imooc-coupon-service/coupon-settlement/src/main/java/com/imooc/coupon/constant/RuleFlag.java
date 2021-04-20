@@ -6,9 +6,9 @@ import lombok.Getter;
 /**
  * 描述：规则类型枚举定义
  *
- * @Author wzy
- * @Date 2020/7/1 8:53
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/7/1 8:53
  **/
 @Getter
 @AllArgsConstructor

@@ -21,9 +21,9 @@ import java.util.Date;
 /**
  * 描述：构造优惠券模板服务测试
  *
- * @Author wzy
- * @Date 2020/6/28 10:59
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/28 10:59
  **/
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -45,6 +45,7 @@ public class BuildTemplateTest {
 
     /**
      * 构造TemplateRequest
+     *
      * @return
      */
     private TemplateRequest fakeTemplateRequest() {

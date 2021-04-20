@@ -7,16 +7,18 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 /**
- * 描述：产品线枚举
+ * <h1>产品线枚举</h1>
  *
- * @Author wzy
- * @Date 2020/6/24 9:15
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/24 9:15
  **/
 @Getter
 @AllArgsConstructor
 public enum ProductLine {
-
+    /**
+     * 产品线枚举定义
+     */
     DAMAO("大猫", 1),
     DABAO("大宝", 2);
     /**

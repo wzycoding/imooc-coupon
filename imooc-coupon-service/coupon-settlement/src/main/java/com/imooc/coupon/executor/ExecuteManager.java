@@ -18,9 +18,10 @@ import java.util.Map;
  * 描述：优惠券结算规则执行管理器
  * 即根据用户的请求（SettlementInfo）找到对应的Executor，去做结算
  * BeanPostProcessor bean后置处理器，当系统中所有的bean都被创建处理之后，才会调用这个类
- * @Author wzy
- * @Date 2020/7/2 9:56
- * @Version V1.0
+ *
+ * @author wzy
+ * @version V1.0
+ * @date 2020/7/2 9:56
  **/
 @Slf4j
 @Component
@@ -33,6 +34,7 @@ public class ExecuteManager implements BeanPostProcessor {
     /**
      * 优惠券结算规则计算入口
      * 注意：一定要保证传递尽量的优惠券个数 >= 1
+     *
      * @param settlement
      * @return
      * @throws CouponException
@@ -64,7 +66,7 @@ public class ExecuteManager implements BeanPostProcessor {
                     settlement.getCouponAndTemplateInfos().size()
             );
 
-            settlement.getCouponAndTemplateInfos().forEach( ct -> {
+            settlement.getCouponAndTemplateInfos().forEach(ct -> {
                 categories.add(CouponCategory.of(ct.getTemplate().getCategory()));
             });
 
@@ -84,8 +86,10 @@ public class ExecuteManager implements BeanPostProcessor {
         }
         return result;
     }
+
     /**
      * 在bean初始化之前执行（before）
+     *
      * @param bean
      * @param beanName
      * @return
@@ -115,6 +119,7 @@ public class ExecuteManager implements BeanPostProcessor {
 
     /**
      * 在bean初始化之后执行（after）
+     *
      * @param bean
      * @param beanName
      * @return

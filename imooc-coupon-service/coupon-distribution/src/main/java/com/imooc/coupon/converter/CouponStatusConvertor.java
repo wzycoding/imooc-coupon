@@ -8,9 +8,9 @@ import javax.persistence.Converter;
 /**
  * 描述：优惠券状态枚举属性转换器
  *
- * @Author wzy
- * @Date 2020/6/28 15:28
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/28 15:28
  **/
 @Converter
 public class CouponStatusConvertor implements AttributeConverter<CouponStatus, Integer> {

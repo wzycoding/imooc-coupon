@@ -14,18 +14,19 @@ import java.util.Map;
 
 /**
  * 描述：优惠券模板微服务 Feign 接口定义
- *
+ * <p>
  * fallback:指定熔断降级实现类
  *
- * @Author wzy
- * @Date 2020/6/29 17:00
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/29 17:00
  **/
 @FeignClient(value = "eureka-client-coupon-template",
         fallback = TemplateClientHystrix.class)
 public interface TemplateClient {
     /**
      * 查找所有可用的优惠券模板
+     *
      * @return 可用的优惠券模板
      */
     @RequestMapping(value = "/coupon-template/template/sdk/all",
@@ -34,6 +35,7 @@ public interface TemplateClient {
 
     /**
      * 获取模板ids 到CouponTemplateSDK的映射
+     *
      * @return
      */
     @RequestMapping(value = "/coupon-template/template/sdk/infos",

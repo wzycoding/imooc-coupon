@@ -11,9 +11,9 @@ import java.util.*;
 /**
  * 描述：优惠券模板feign熔断降级策略
  *
- * @Author wzy
- * @Date 2020/6/29 18:03
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/29 18:03
  **/
 @Slf4j
 @Component
@@ -34,6 +34,7 @@ public class TemplateClientHystrix implements TemplateClient {
 
     /**
      * 获取模板ids 到 CouponTemplateSDK的映射
+     *
      * @param ids 优惠券模板id
      */
     @Override

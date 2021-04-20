@@ -22,10 +22,12 @@ import java.util.Collections;
 /**
  * 描述：结算规则执行管理器测试用例
  * 对 Executor的分发与结算逻辑进行测试
- * @Author wzy
- * @Date 2020/7/2 19:23
- * @Version V1.0
-// **/
+ *
+ * @author wzy
+ * @version V1.0
+ * //
+ * @date 2020/7/2 19:23
+ **/
 @Slf4j
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -67,6 +69,7 @@ public class ExecuteManagerTest {
 
     /**
      * fake满减优惠券的结算信息
+     *
      * @return
      */
     private SettlementInfo fakeManJianCouponSettlement() {
@@ -114,6 +117,7 @@ public class ExecuteManagerTest {
 
     /**
      * fake折扣优惠券的计算信息
+     *
      * @return
      */
     private SettlementInfo fakeZheKouCouponSettlement() {

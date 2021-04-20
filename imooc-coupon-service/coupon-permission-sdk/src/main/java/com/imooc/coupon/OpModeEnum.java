@@ -6,9 +6,9 @@ import lombok.Getter;
 /**
  * 描述：操作模式的枚举定义
  *
- * @Author wzy
- * @Date 2020/7/17 13:28
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/7/17 13:28
  **/
 @Getter
 @AllArgsConstructor

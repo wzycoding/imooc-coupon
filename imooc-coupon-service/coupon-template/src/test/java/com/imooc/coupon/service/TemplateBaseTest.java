@@ -13,9 +13,9 @@ import java.util.Arrays;
 /**
  * 描述：优惠券模板基础服务的测试
  *
- * @Author wzy
- * @Date 2020/6/28 12:20
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/28 12:20
  **/
 @SpringBootTest
 @RunWith(SpringRunner.class)

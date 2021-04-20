@@ -17,9 +17,9 @@ import java.util.Date;
 /**
  * 描述：优惠券(用户领取的优惠券记录)实体类
  *
- * @Author wzy
- * @Date 2020/6/28 15:08
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/28 15:08
  **/
 @Data
 @AllArgsConstructor

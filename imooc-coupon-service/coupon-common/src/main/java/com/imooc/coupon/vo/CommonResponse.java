@@ -10,9 +10,9 @@ import java.io.Serializable;
  * 描述：通用响应对象，不过有的时候我们可能不想使用统一响应的数据结构，
  *      想传递一些自定义的数据结构，这里需要定义一个注解来忽略统一响应
  *
- * @Author wzy
- * @Date 2020/6/23 10:50
- * @Version V1.0
+ * @author wzy
+ * @date 2020/6/23 10:50
+ * @version V1.0
  **/
 @Data
 @AllArgsConstructor

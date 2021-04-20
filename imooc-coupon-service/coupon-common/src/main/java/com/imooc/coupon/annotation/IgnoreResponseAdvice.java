@@ -8,9 +8,9 @@ import java.lang.annotation.Target;
 /**
  * 描述：忽略统一响应注解定义
  *
- * @Author wzy
- * @Date 2020/6/23 10:55
- * @Version V1.0
+ * @author wzy
+ * @date 2020/6/23 10:55
+ * @version V1.0
  **/
 @Target({ ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

@@ -16,9 +16,9 @@ import java.util.List;
 /**
  * 描述：清理过期优惠券模板定时任务
  *
- * @Author wzy
- * @Date 2020/6/27 22:10
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/27 22:10
  **/
 @Slf4j
 @Component
@@ -49,7 +49,7 @@ public class ScheduledTask {
         Date cur = new Date();
         List<CouponTemplate> expiredTemplates =
                 new ArrayList<>(templates.size());
-        templates.forEach( t -> {
+        templates.forEach(t -> {
             // 根据优惠券模板规则中的“过期规则”进行判断
             TemplateRule rule = t.getRule();
             // 比当前时间小，说明已经过期

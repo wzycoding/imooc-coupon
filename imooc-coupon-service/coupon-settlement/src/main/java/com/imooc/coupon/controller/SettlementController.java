@@ -13,15 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 描述：结算服务的Controller
  *
- * @Author wzy
- * @Date 2020/7/2 10:50
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/7/2 10:50
  **/
 @Slf4j
 @RestController
 public class SettlementController {
 
-    /** 结算规则执行管理器 **/
+    /**
+     * 结算规则执行管理器
+     **/
     @Autowired
     private ExecuteManager executeManager;
 

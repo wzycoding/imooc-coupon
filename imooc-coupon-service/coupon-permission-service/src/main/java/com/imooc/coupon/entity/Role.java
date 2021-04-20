@@ -9,9 +9,9 @@ import javax.persistence.*;
 /**
  * 描述：用户角色实体类
  *
- * @Author wzy
- * @Date 2020/7/17 14:24
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/7/17 14:24
  **/
 @Data
 @NoArgsConstructor

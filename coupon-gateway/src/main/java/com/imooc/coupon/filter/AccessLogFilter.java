@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 描述：
+ * 描述：打印执行日志的Filter，发起请求->网关->pre filter->其他filter->指定服务返回结果->postFilter->返回给请求方
  *
- * @Author wzy
- * @Date 2020/6/23 8:31
- * @Version V1.0
+ * @author wzy
+ * @date 2020/6/23 8:31
+ * @version V1.0
  **/
 @Slf4j
 @Component

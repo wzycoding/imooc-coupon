@@ -7,11 +7,12 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
- * 描述：优惠券模板微服务启动入口
- *   @EnableJpaAuditing JPA审核注解
- * @Author wzy
- * @Date 2020/6/23 18:36
- * @Version V1.0
+ * <h1>优惠券模板微服务启动入口</h1>
+ * * @EnableJpaAuditing JPA审核注解
+ *
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/23 18:36
  **/
 @EnableJpaAuditing
 @EnableScheduling

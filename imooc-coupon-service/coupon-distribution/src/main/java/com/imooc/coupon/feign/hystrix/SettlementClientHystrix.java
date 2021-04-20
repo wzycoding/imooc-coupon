@@ -10,15 +10,16 @@ import org.springframework.stereotype.Component;
 /**
  * 描述：结算微服务调用的熔断降级实现
  *
- * @Author wzy
- * @Date 2020/6/29 21:32
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/29 21:32
  **/
 @Slf4j
 @Component
 public class SettlementClientHystrix implements SettlementClient {
     /**
      * 优惠券规则计算
+     *
      * @param settlementInfo 入参
      */
     @Override

@@ -13,9 +13,9 @@ import java.util.Collections;
 /**
  * 描述：满减优惠券结算规则执行器
  *
- * @Author wzy
- * @Date 2020/7/1 13:16
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/7/1 13:16
  **/
 @Slf4j
 @Service
@@ -39,7 +39,7 @@ public class ManJianExecutor extends AbstractExecutor implements RuleExecutor {
         CouponTemplateSDK templateSDK = settlement.getCouponAndTemplateInfos()
                 .get(0).getTemplate();
         // 获取满减基准值
-        double base = (double)templateSDK.getRule().getDiscount().getBase();
+        double base = (double) templateSDK.getRule().getDiscount().getBase();
         // 减多少
         double quota = templateSDK.getRule().getDiscount().getQuota();
 

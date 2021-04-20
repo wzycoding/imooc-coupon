@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 /**
  * 描述：权限校验请求对象定义
  *
- * @Author wzy
- * @Date 2020/7/17 13:33
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/7/17 13:33
  **/
 @Data
 @NoArgsConstructor

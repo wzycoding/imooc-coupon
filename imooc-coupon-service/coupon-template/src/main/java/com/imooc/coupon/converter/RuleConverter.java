@@ -9,9 +9,9 @@ import javax.persistence.Converter;
 /**
  * 描述：优惠券规则属性转换器
  *
- * @Author wzy
- * @Date 2020/6/26 9:21
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/26 9:21
  **/
 @Converter
 public class RuleConverter implements AttributeConverter<TemplateRule, String> {

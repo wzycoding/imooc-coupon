@@ -11,9 +11,9 @@ import javax.persistence.Converter;
  * X:是实体属性的类型
  * Y:是数据库字段的类型
  *
- * @Author wzy
- * @Date 2020/6/26 9:04
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/26 9:04
  **/
 @Converter
 public class CouponCategoryConverter implements AttributeConverter<CouponCategory, String> {

@@ -15,16 +15,17 @@ import java.text.SimpleDateFormat;
  * 并不会使用对应的描述而是使用整个枚举对象，因为我们序列化返回的值是给用户看的。所以我们需要对默认的序列化规则
  * 进行调整。
  *
- * @Author wzy
- * @Date 2020/6/26 9:45
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/26 9:45
  **/
 public class CouponTemplateSerialize extends JsonSerializer<CouponTemplate> {
 
     /**
      * 序列化方法
+     *
      * @param template
-     * @param generator json生成器
+     * @param generator          json生成器
      * @param serializerProvider
      * @throws IOException
      */
@@ -35,18 +36,18 @@ public class CouponTemplateSerialize extends JsonSerializer<CouponTemplate> {
         // 开始序列化对象
         generator.writeStartObject();
 
-        generator.writeStringField("id", template.getId().toString() );
-        generator.writeStringField("name", template.getName() );
-        generator.writeStringField("logo", template.getLogo() );
+        generator.writeStringField("id", template.getId().toString());
+        generator.writeStringField("name", template.getName());
+        generator.writeStringField("logo", template.getLogo());
         generator.writeStringField("desc", template.getDescription());
         generator.writeStringField("category",
                 template.getCategory().getDescription());
         generator.writeStringField("productLine",
                 template.getProductLine().getDescription());
-        generator.writeStringField("count", template.getCount().toString() );
+        generator.writeStringField("count", template.getCount().toString());
         generator.writeStringField("createTime",
-                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(template.getCreateTime()) );
-        generator.writeStringField("userId", template.getUserId().toString() );
+                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(template.getCreateTime()));
+        generator.writeStringField("userId", template.getUserId().toString());
         generator.writeStringField("key", template.getKey() + String.format("%04d", template.getId()));
         generator.writeStringField("target", template.getTarget().getDescription());
         generator.writeStringField("rule",

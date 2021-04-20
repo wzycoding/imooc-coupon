@@ -8,9 +8,9 @@ import javax.persistence.Converter;
 /**
  * 描述：
  *
- * @Author wzy
- * @Date 2020/6/26 9:17
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/26 9:17
  **/
 @Converter
 public class DistributeTargetConverter implements AttributeConverter<DistributeTarget, Integer> {

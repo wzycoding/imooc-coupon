@@ -7,19 +7,20 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 描述：全局异常处理
+ * <h1> 描述：全局异常处理</h1>
  *
- * @Author wzy
- * @Date 2020/6/23 12:24
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/23 12:24
  **/
 @RestControllerAdvice
 public class GlobalExceptionAdvice {
 
     /**
-     * 对CouponException 进行统一处理
+     * <h2>对CouponException 进行统一处理</h2>
+     *
      * @param request request
-     * @param ex 异常对象
+     * @param ex      异常对象
      * @return 异常响应信息
      */
     @ExceptionHandler(value = CouponException.class)

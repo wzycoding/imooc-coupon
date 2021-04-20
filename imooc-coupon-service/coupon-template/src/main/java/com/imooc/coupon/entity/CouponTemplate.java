@@ -23,11 +23,12 @@ import java.util.Date;
 
 /**
  * 描述：优惠券模板实体类定义：基础属性 + 规则属性
- *
+ * <p>
  * Transient 不映射到数据库表中的字段
+ *
  * @author wzy
- * @Date 2020/6/25 13:58
  * @version V1.0
+ * @date 2020/6/25 13:58
  **/
 @Data
 @AllArgsConstructor

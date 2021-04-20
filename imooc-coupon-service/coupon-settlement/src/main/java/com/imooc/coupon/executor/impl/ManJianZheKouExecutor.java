@@ -20,9 +20,9 @@ import java.util.stream.Collectors;
 /**
  * 描述：满减 + 折扣优惠券规则执行器
  *
- * @Author wzy
- * @Date 2020/7/1 17:57
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/7/1 17:57
  **/
 @Slf4j
 @Service
@@ -106,6 +106,7 @@ public class ManJianZheKouExecutor extends AbstractExecutor
     /**
      * 当前两张优惠券是否可以共用
      * 即校验 TemplateRule中的weight是否满足条件
+     *
      * @param manJian
      * @param zheKou
      * @return
@@ -136,7 +137,7 @@ public class ManJianZheKouExecutor extends AbstractExecutor
         ));
         // 判断两张优惠券是否可以同时使用，如果满减可叠加的优惠券是当前两张优惠券的子集，或者
         // 折扣可叠加的优惠券时当前两张优惠券的子集，就表示两张优惠券可以同时使用
-        return CollectionUtils.isSubCollection(Arrays.asList(manjianKey, zhekouKey), allSharedKeysForManJian)  ||
+        return CollectionUtils.isSubCollection(Arrays.asList(manjianKey, zhekouKey), allSharedKeysForManJian) ||
                 CollectionUtils.isSubCollection(Arrays.asList(manjianKey, zhekouKey), allSharedKeysForZheKou);
     }
 
@@ -144,6 +145,7 @@ public class ManJianZheKouExecutor extends AbstractExecutor
      * 校验商品类型和优惠券是否匹配
      * 1、满减 + 折扣的校验
      * 2、如果想要使用多类优惠券，则必须要所有的商品类型都必须包含在内，即差集为空
+     *
      * @param settlement
      * @return
      */

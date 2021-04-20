@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 /**
  * 描述：构建优惠券模板服务实现类
  *
- * @Author wzy
- * @Date 2020/6/27 17:41
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/27 17:41
  **/
 @Slf4j
 @Service
@@ -62,6 +62,7 @@ public class BuildTemplateServiceImpl implements IBuildTemplateService {
 
     /**
      * 将TemplateRequest转换为CouponTemplate
+     *
      * @param request request对象
      * @return CouponTemplate对象
      */

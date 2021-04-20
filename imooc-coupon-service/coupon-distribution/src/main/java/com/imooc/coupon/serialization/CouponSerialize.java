@@ -12,9 +12,9 @@ import java.text.SimpleDateFormat;
 /**
  * 描述：优惠券实体类自定义序列化器
  *
- * @Author wzy
- * @Date 2020/6/28 15:32
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/28 15:32
  **/
 public class CouponSerialize extends JsonSerializer<Coupon> {
     @Override

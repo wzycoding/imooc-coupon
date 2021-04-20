@@ -29,10 +29,11 @@ import java.util.stream.Collectors;
  * 描述：用户服务相关的接口实现
  * 所有的操作过程，状态都保存在redis中，并通过kafka把消息传递到MySQL中
  * 为什么使用kafka而不是SpringBoot中的异步处理？
- *    因为需要保证一致性，使用高可用的Kafka
- * @Author wzy
- * @Date 2020/6/29 22:57
- * @Version V1.0
+ * 因为需要保证一致性，使用高可用的Kafka
+ *
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/29 22:57
  **/
 @Slf4j
 @Service
@@ -100,8 +101,8 @@ public class UserServiceImpl implements IUserService {
             Map<Integer, CouponTemplateSDK> id2TemplateSDK =
                     templateClient.findIds2TemplateSDK(
                             dbCoupons.stream()
-                            .map(Coupon::getTemplateId)
-                            .collect(Collectors.toList())
+                                    .map(Coupon::getTemplateId)
+                                    .collect(Collectors.toList())
                     ).getData();
             // 填充TemplateSDK字段
             dbCoupons.forEach(
@@ -119,7 +120,7 @@ public class UserServiceImpl implements IUserService {
         // preTarget可能会存在无效优惠券,去除无效优惠券
         preTarget = preTarget.stream()
                 .filter(c -> c.getId() != -1).
-                collect(Collectors.toList());
+                        collect(Collectors.toList());
 
         // 如果当前获取的是可用优惠券，还需要对已过期优惠券的延迟处理，返回给用户前获取
         if (CouponStatus.of(status) == CouponStatus.USABLE) {
@@ -137,7 +138,7 @@ public class UserServiceImpl implements IUserService {
                     JSON.toJSONString(new CouponKafkaMessage(
                             CouponStatus.EXPIRED.getCode(),
                             classify.getExpired().stream()
-                            .map(Coupon::getId).collect(Collectors.toList()))
+                                    .map(Coupon::getId).collect(Collectors.toList()))
                     ));
             return classify.getUsable();
         }
@@ -147,7 +148,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public List<CouponTemplateSDK> findAvailableTemplate(Long userId)
-            throws CouponException{
+            throws CouponException {
         long curTime = new Date().getTime();
 
         List<CouponTemplateSDK> templateSDKS =
@@ -206,6 +207,7 @@ public class UserServiceImpl implements IUserService {
      * 3、save to db
      * 4、填充CouponTemplateSDK
      * 5、save to cache
+     *
      * @param request {@link AcquireTemplateRequest}
      */
 
@@ -219,7 +221,7 @@ public class UserServiceImpl implements IUserService {
         // todo:这里应该做优惠券模板是否过期做检查
 
         // 优惠券模板是需要存在的
-        if(ids2TemplateSDK.size() <= 0) {
+        if (ids2TemplateSDK.size() <= 0) {
             log.error("Can Not Acquire Template From TemplateClient: {}",
                     request.getTemplateSDK().getId());
             throw new CouponException("Can Not Acquire Template From TemplateClient");
@@ -237,7 +239,7 @@ public class UserServiceImpl implements IUserService {
         // 判断用户领取是否超出限制 todo:这里的limitation不可信
         if (templateId2Coupons.containsKey(request.getTemplateSDK().getId())
                 && templateId2Coupons.get(request.getTemplateSDK().getId()).size() >=
-        request.getTemplateSDK().getRule().getLimitation()) {
+                request.getTemplateSDK().getRule().getLimitation()) {
             log.error("Exceed Template Assign Limitation: {}",
                     request.getTemplateSDK().getId());
             throw new CouponException("Exceed Template Assign Limitation");
@@ -276,6 +278,7 @@ public class UserServiceImpl implements IUserService {
     /**
      * 结算核销优惠券
      * 这里要注意，规则相关处理需要由 Settlement 系统去做，当前系统仅仅做业务和校验。
+     *
      * @param info {@link SettlementInfo}
      */
     @Override
@@ -307,7 +310,7 @@ public class UserServiceImpl implements IUserService {
         // 用户的优惠券列表为空，或者传进来的优惠券列表不是用户优惠券列表的子集
         if (MapUtils.isEmpty(id2Coupon) || !CollectionUtils.isSubCollection(
                 ctInfos.stream().map(SettlementInfo.CouponAndTemplateInfo::getId)
-                .collect(Collectors.toList()), id2Coupon.keySet()
+                        .collect(Collectors.toList()), id2Coupon.keySet()
         )) {
             log.info("{}", id2Coupon.keySet());
             log.info("{}", ctInfos.stream().map(SettlementInfo.CouponAndTemplateInfo::getId)
@@ -348,6 +351,7 @@ public class UserServiceImpl implements IUserService {
 
     /**
      * 保留两位小数
+     *
      * @param value 目标数值
      */
     private double retain2Decimals(double value) {

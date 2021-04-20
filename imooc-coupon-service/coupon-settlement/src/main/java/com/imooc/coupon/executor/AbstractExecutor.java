@@ -13,9 +13,9 @@ import java.util.stream.Collectors;
 /**
  * 描述：规则执行器抽象类，定义通用方法
  *
- * @Author wzy
- * @Date 2020/7/1 9:18
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/7/1 9:18
  **/
 public abstract class AbstractExecutor {
 
@@ -46,8 +46,9 @@ public abstract class AbstractExecutor {
 
     /**
      * 处理商品类型与优惠券限制不匹配的情况
+     *
      * @param settlement {@link SettlementInfo} 用户传递的结算信息
-     * @param goodsSum 商品原始总价
+     * @param goodsSum   商品原始总价
      * @return {@link SettlementInfo} 已经修改的结算信息
      */
     protected SettlementInfo processGoodsTypeNotSatisfy(

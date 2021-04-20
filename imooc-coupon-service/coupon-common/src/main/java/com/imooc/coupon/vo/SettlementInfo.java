@@ -14,10 +14,9 @@ import java.util.List;
  * 3、优惠券列表
  * 4、结算结果金额
  *
- *
- * @Author wzy
- * @Date 2020/6/28 23:39
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/28 23:39
  **/
 @Data
 @NoArgsConstructor

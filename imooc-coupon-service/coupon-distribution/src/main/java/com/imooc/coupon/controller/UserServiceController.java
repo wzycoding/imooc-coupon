@@ -16,9 +16,9 @@ import java.util.List;
 /**
  * 描述：用户服务controller
  *
- * @Author wzy
- * @Date 2020/6/30 15:59
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/30 15:59
  **/
 @Slf4j
 @RestController

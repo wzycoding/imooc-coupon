@@ -11,21 +11,22 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 /**
- * 描述：对HTTP响应进行处理
- * Advice对某一方面功能进行增强
+ * <h1>描述：对HTTP响应进行处理</h1>
+ * Advice对某一方面功能进行增强，ResponseBodyAdvice，相当于对ResponseBody进行增强
  *
- * @Author wzy
- * @Date 2020/6/23 10:58
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/23 10:58
  **/
 @RestControllerAdvice
 @SuppressWarnings("all")
 public class CommonResponseDataAdvice implements ResponseBodyAdvice<Object> {
     /**
      * 判断是否需要对响应进行处理
-     * @param methodParameter
+     *
+     * @param methodParameter controller方法定义
      * @param aClass
-     * @return
+     * @return 是否需要处理
      */
     @Override
     public boolean supports(MethodParameter methodParameter,
@@ -47,8 +48,9 @@ public class CommonResponseDataAdvice implements ResponseBodyAdvice<Object> {
     }
 
     /**
-     * 响应返回之前的处理
-     * @param o 方法返回值
+     * <h2>响应返回之前的处理</h2>
+     *
+     * @param o                  Controller返回对象
      * @param methodParameter
      * @param mediaType
      * @param aClass

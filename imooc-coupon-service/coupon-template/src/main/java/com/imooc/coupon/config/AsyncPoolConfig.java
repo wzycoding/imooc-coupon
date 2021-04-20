@@ -16,9 +16,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 /**
  * 描述：自定义生成优惠券异步线程池配置
  *
- * @Author wzy
- * @Date 2020/6/26 11:50
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/26 11:50
  **/
 @Slf4j
 @Configuration
@@ -28,7 +28,7 @@ public class AsyncPoolConfig implements AsyncConfigurer {
     @Bean
     @Override
     public Executor getAsyncExecutor() {
-        ThreadPoolTaskExecutor executor= new ThreadPoolTaskExecutor();
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(10);
         executor.setMaxPoolSize(20);
         executor.setQueueCapacity(20);

@@ -7,9 +7,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 /**
  * 描述：权限微服务启动程序
  *
- * @Author wzy
- * @Date 2020/7/17 13:46
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/7/17 13:46
  **/
 @EnableEurekaClient
 @SpringBootApplication

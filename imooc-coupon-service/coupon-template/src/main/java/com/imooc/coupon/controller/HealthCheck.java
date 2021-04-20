@@ -17,15 +17,17 @@ import java.util.Map;
 /**
  * 描述：健康检查接口
  *
- * @Author wzy
- * @Date 2020/6/27 22:34
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/27 22:34
  **/
 @Slf4j
 @RestController
 public class HealthCheck {
 
-    /** 服务发现客户端 :获取其他服务的元信息**/
+    /**
+     * 服务发现客户端 :获取其他服务的元信息
+     **/
     private final DiscoveryClient discoveryClient;
 
     /**
@@ -72,7 +74,7 @@ public class HealthCheck {
                 discoveryClient.getInstances(registration.getServiceId());
         List<Map<String, Object>> result =
                 new ArrayList<>(instances.size());
-        instances.forEach( i -> {
+        instances.forEach(i -> {
             Map<String, Object> info = new HashMap<>();
             // 服务id
             info.put("serviceId", i.getServiceId());

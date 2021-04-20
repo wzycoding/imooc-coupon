@@ -9,9 +9,9 @@ import java.util.List;
 /**
  * 描述：优惠券kafka消息对象定义
  *
- * @Author wzy
- * @Date 2020/6/29 14:16
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/29 14:16
  **/
 @Data
 @NoArgsConstructor

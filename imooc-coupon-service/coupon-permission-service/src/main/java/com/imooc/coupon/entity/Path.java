@@ -10,8 +10,8 @@ import javax.persistence.*;
  * 描述：Path实体类
  *
  * @author wzy
+ * @version V1.0
  * @date 2020/7/17 14:03
- * @Version V1.0
  **/
 @Data
 @NoArgsConstructor

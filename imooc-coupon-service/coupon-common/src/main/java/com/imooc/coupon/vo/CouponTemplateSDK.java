@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 /**
  * 描述：微服务直接的优惠券模板信息定义
  *
- * @Author wzy
- * @Date 2020/6/26 12:20
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/26 12:20
  **/
 @Data
 @NoArgsConstructor

@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * 描述：优惠券结算微服务 Feign接口定义
  *
- * @Author wzy
- * @Date 2020/6/29 17:16
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/29 17:16
  **/
 @FeignClient(value = "eureka-client-coupon-settlement",
         fallback = SettlementClientHystrix.class)
@@ -22,6 +22,7 @@ public interface SettlementClient {
 
     /**
      * 优惠券规则计算(计算出最终的价格)
+     *
      * @param settlementInfo 入参
      */
     @RequestMapping(value = "/coupon-settlement/settlement/compute",

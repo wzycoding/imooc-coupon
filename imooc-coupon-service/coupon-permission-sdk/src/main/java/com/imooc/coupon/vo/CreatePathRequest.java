@@ -10,9 +10,9 @@ import java.util.List;
 /**
  * 描述：路径创建请求对象定义
  *
- * @Author wzy
- * @Date 2020/7/17 13:35
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/7/17 13:35
  **/
 @Data
 @NoArgsConstructor

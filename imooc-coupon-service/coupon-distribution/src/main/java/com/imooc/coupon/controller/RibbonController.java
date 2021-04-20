@@ -16,9 +16,9 @@ import java.util.Map;
 /**
  * 描述：Ribbon 应用 controller
  *
- * @Author wzy
- * @Date 2020/6/30 15:21
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/30 15:21
  **/
 @Slf4j
 @RestController
@@ -52,7 +52,7 @@ public class RibbonController {
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
-    private static class TemplateInfo{
+    private static class TemplateInfo {
 
         private Integer code;
         private String message;

@@ -23,6 +23,4 @@
 
     <!--需要显式指定pom类型默认jar-->
     <packaging>pom</packaging>
-
-
 </project>

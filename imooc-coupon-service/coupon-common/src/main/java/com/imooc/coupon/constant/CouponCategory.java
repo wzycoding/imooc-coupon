@@ -7,16 +7,18 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 /**
- * 描述：优惠券分类枚举
+ * <h1>优惠券分类枚举</h1>
  *
- * @Author wzy
- * @Date 2020/6/24 9:07
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/24 9:07
  **/
 @Getter
 @AllArgsConstructor
 public enum CouponCategory {
-
+    /**
+     * 优惠券分类枚举定义
+     */
     MANJIAN("满减券", "001"),
     ZHEKOU("折扣券", "002"),
     LIJIAN("立减券", "003");
@@ -32,11 +34,13 @@ public enum CouponCategory {
 
     /**
      * 获取枚举方法
+     *
      * @param code 分类编码
      * @return 优惠券对象
      */
     public static CouponCategory of(String code) {
         Objects.requireNonNull(code);
+
         return Stream.of(values())
                 .filter(bean -> bean.code.equals(code))
                 .findAny()

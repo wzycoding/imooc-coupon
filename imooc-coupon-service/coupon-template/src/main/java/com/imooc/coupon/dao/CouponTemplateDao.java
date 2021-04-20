@@ -9,9 +9,10 @@ import java.util.List;
  * 描述：优惠券模板dao接口
  * T 实体类的类型
  * ID 主键类型
- * @Author wzy
- * @Date 2020/6/26 10:06
- * @Version V1.0
+ *
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/26 10:06
  **/
 public interface CouponTemplateDao
         extends JpaRepository<CouponTemplate, Integer> {

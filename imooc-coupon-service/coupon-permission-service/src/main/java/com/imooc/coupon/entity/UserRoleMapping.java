@@ -9,9 +9,9 @@ import javax.persistence.*;
 /**
  * 描述：用户与角色映射关系实体类
  *
- * @Author wzy
- * @Date 2020/7/17 23:22
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/7/17 23:22
  **/
 @Data
 @NoArgsConstructor

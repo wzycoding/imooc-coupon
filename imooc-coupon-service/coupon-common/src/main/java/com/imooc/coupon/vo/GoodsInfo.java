@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 /**
  * 描述：fake商品信息（微服务之间传递）
  *
- * @Author wzy
- * @Date 2020/6/28 23:26
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/28 23:26
  **/
 @Data
 @AllArgsConstructor

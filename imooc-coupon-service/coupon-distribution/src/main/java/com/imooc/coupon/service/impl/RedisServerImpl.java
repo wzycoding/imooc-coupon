@@ -23,9 +23,9 @@ import java.util.stream.Collectors;
 /**
  * 描述：Redis相关的操作服务接口定义
  *
- * @Author wzy
- * @Date 2020/6/29 10:07
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/29 10:07
  **/
 @Slf4j
 @Service
@@ -47,7 +47,7 @@ public class RedisServerImpl implements IRedisService {
                 .stream()
                 .map(o -> Objects.toString(o, null))
                 .collect(Collectors.toList());
-        if(CollectionUtils.isEmpty(couponStrs)) {
+        if (CollectionUtils.isEmpty(couponStrs)) {
             saveEmptyCouponListToCache(userId, Collections.singletonList(status));
             return Collections.emptyList();
         }
@@ -58,6 +58,7 @@ public class RedisServerImpl implements IRedisService {
 
     /**
      * 避免缓存穿透
+     *
      * @param userId 用户id
      * @param status 优惠券状态列表
      */
@@ -74,7 +75,7 @@ public class RedisServerImpl implements IRedisService {
         // 多条命令，来减少网络延迟
         SessionCallback<Object> sessionCallback = new SessionCallback<Object>() {
             @Override
-            public  Object execute(RedisOperations operations) throws DataAccessException {
+            public Object execute(RedisOperations operations) throws DataAccessException {
                 status.forEach(s -> {
                     // 获取redisKey
                     String redisKey = status2RedisKey(s, userId);
@@ -130,7 +131,8 @@ public class RedisServerImpl implements IRedisService {
 
     /**
      * 新增加优惠券到Cache中
-     * @param userId 用户id
+     *
+     * @param userId  用户id
      * @param coupons 优惠券列表
      * @return 优惠券的个数
      */
@@ -161,13 +163,13 @@ public class RedisServerImpl implements IRedisService {
      * 将已使用的优惠券加入到 Cache中，如果status，表示用户操作是使用当前的优惠券，
      * 将会影响到Cache：USABLE、USED
      *
-     * @param userId 用户id
+     * @param userId  用户id
      * @param coupons 优惠券列表
      * @return 优惠券数量
      */
     @SuppressWarnings("all")
     private Integer addCouponToCacheForUsed(Long userId, List<Coupon> coupons)
-            throws CouponException{
+            throws CouponException {
         log.debug("Add Coupon To Cache For Used.");
         Map<String, String> needCacheForUsed = new HashMap<>(coupons.size());
 
@@ -249,12 +251,13 @@ public class RedisServerImpl implements IRedisService {
      * 将过期优惠券加入的Cache中，
      * status 是Expired，代表是已有的优惠券过期了，影响到两个Cache
      * USABLE, EXPIRED
-     * @param userId 用户id
+     *
+     * @param userId  用户id
      * @param coupons 优惠券列表
      * @return 优惠券个数
      */
     @SuppressWarnings("all")
-    private Integer addCouponToCacheForExpired(Long userId, List<Coupon> coupons) throws CouponException{
+    private Integer addCouponToCacheForExpired(Long userId, List<Coupon> coupons) throws CouponException {
         log.debug("Add Coupon To Cache For Expired.");
 
         // 最终需要保存的 Cache, 需要保存的优惠券信息
@@ -293,7 +296,7 @@ public class RedisServerImpl implements IRedisService {
 
         SessionCallback<Object> sessionCallback = new SessionCallback<Object>() {
             @Override
-            public  Object execute(RedisOperations operations) throws DataAccessException {
+            public Object execute(RedisOperations operations) throws DataAccessException {
                 // 1、向过期优惠券中添加优惠券列表
                 operations.opsForHash().putAll(redisKeyForExpired, needCachedForExpired);
 
@@ -318,6 +321,7 @@ public class RedisServerImpl implements IRedisService {
 
     /**
      * 根据status获取对应的Redis Key
+     *
      * @param status 状态
      * @param userId 用户id
      * @return Redis Key
@@ -330,16 +334,17 @@ public class RedisServerImpl implements IRedisService {
             case USED:
                 redisKey = String.format("%s%s",
                         Constant.RedisPrefix.USER_COUPON_USED, userId);
-            break;
+                break;
             case USABLE:
                 redisKey = String.format("%s%s",
-                    Constant.RedisPrefix.USER_COUPON_USABLE, userId);
+                        Constant.RedisPrefix.USER_COUPON_USABLE, userId);
                 break;
             case EXPIRED:
                 redisKey = String.format("%s%s",
-                    Constant.RedisPrefix.USER_COUPON_EXPIRED, userId);
+                        Constant.RedisPrefix.USER_COUPON_EXPIRED, userId);
                 break;
-            default:break;
+            default:
+                break;
         }
         return redisKey;
     }
@@ -347,6 +352,7 @@ public class RedisServerImpl implements IRedisService {
     /**
      * 获取一个随机的过期时间
      * 缓存雪崩，key在同一时间失效
+     *
      * @param min 最小的小时数
      * @param max 最大的小时数
      * @return 返回 [min, max]直接的随机秒数

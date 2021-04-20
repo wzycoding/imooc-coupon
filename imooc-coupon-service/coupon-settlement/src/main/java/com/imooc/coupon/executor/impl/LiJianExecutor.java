@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 /**
  * 描述：立减优惠券结算规则执行器
  *
- * @Author wzy
- * @Date 2020/7/1 17:06
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/7/1 17:06
  **/
 @Slf4j
 @Service

@@ -15,9 +15,9 @@ import java.util.List;
 /**
  * 描述：用户优惠券分类，根据优惠券状态
  *
- * @Author wzy
- * @Date 2020/6/29 22:30
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/29 22:30
  **/
 @Data
 @NoArgsConstructor
@@ -33,11 +33,14 @@ public class CouponClassify {
      */
     private List<Coupon> used;
 
-    /** 过期的 **/
+    /**
+     * 过期的
+     **/
     private List<Coupon> expired;
 
     /**
      * 对当前的优惠券进行分类
+     *
      * @param coupons 优惠券
      */
     public static CouponClassify classify(List<Coupon> coupons) {
@@ -61,7 +64,7 @@ public class CouponClassify {
                 isTimeExpire = DateUtils.addDays(
                         c.getAssignTime(),
                         c.getTemplateSDK().getRule().getExpiration().getGap()
-                        ).getTime() <= curTime;
+                ).getTime() <= curTime;
             }
 
             // 状态如果已使用直接加入集合

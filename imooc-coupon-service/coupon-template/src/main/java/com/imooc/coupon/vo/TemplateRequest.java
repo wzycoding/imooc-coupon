@@ -11,9 +11,9 @@ import org.apache.commons.lang3.StringUtils;
 /**
  * 描述：优惠券模板创建请求对象
  *
- * @Author wzy
- * @Date 2020/6/26 10:17
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/26 10:17
  **/
 @Data
 @AllArgsConstructor

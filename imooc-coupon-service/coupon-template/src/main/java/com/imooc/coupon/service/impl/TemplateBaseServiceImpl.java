@@ -19,9 +19,9 @@ import java.util.stream.Collectors;
 /**
  * 描述：优惠券模板基础服务实现类
  *
- * @Author wzy
- * @Date 2020/6/27 18:23
- * @Version V1.0
+ * @author wzy
+ * @version V1.0
+ * @date 2020/6/27 18:23
  **/
 @Slf4j
 @Service
@@ -68,20 +68,21 @@ public class TemplateBaseServiceImpl implements ITemplateBaseService {
 
     /**
      * 将CouponTemplate 转换为CouponTemplateSDK
+     *
      * @param template
      * @return
      */
     private CouponTemplateSDK template2TemplateSDK(CouponTemplate template) {
         return new CouponTemplateSDK(
-              template.getId(),
-              template.getName(),
-              template.getLogo(),
-              template.getDescription(),
-              template.getCategory().getCode(),
-              template.getProductLine().getCode(),
-              template.getKey(), //并不是拼装好的 Template key, 没加id
-              template.getTarget().getCode(),
-              template.getRule()
+                template.getId(),
+                template.getName(),
+                template.getLogo(),
+                template.getDescription(),
+                template.getCategory().getCode(),
+                template.getProductLine().getCode(),
+                template.getKey(), //并不是拼装好的 Template key, 没加id
+                template.getTarget().getCode(),
+                template.getRule()
         );
     }
 }
