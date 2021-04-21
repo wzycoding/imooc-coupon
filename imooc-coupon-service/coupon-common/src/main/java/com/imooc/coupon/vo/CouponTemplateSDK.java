@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@SuppressWarnings("all")
 public class CouponTemplateSDK {
     /**
      * 优惠券模板主键

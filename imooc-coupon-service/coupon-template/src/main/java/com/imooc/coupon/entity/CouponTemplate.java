@@ -25,6 +25,7 @@ import java.util.Date;
  * <h1>优惠券模板实体类定义：基础属性 + 规则属性</h1>
  * <p>
  * Transient 不映射到数据库表中的字段
+ * * @JsonSerialize对类执行的序列化器
  *
  * @author wzy
  * @version V1.0

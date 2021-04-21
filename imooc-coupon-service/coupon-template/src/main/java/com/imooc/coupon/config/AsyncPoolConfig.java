@@ -14,7 +14,9 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
- * 描述：自定义生成优惠券异步线程池配置
+ * <h1>自定义生成优惠券异步线程池配置</h1>
+ * <p>
+ * *@EnableAsync这个注解也可以放到配置类，也可以放到启动入口中
  *
  * @author wzy
  * @version V1.0
@@ -25,6 +27,11 @@ import java.util.concurrent.ThreadPoolExecutor;
 @EnableAsync
 public class AsyncPoolConfig implements AsyncConfigurer {
 
+    /**
+     * 配置异步任务线程池
+     *
+     * @return 异步任务线程池对象
+     */
     @Bean
     @Override
     public Executor getAsyncExecutor() {
@@ -45,11 +52,19 @@ public class AsyncPoolConfig implements AsyncConfigurer {
         return executor;
     }
 
+    /**
+     * 返回捕获异常处理类
+     *
+     * @return 异步任务异常处理对象
+     */
     @Override
     public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
         return new AsyncExceptionHandler();
     }
 
+    /**
+     * 捕获异常处理类
+     */
     @SuppressWarnings("all")
     class AsyncExceptionHandler implements AsyncUncaughtExceptionHandler {
 

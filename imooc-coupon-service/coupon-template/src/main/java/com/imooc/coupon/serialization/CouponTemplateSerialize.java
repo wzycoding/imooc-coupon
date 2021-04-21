@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
  * 描述：优惠券模板实体类自定义序列化器
  * 为什么要有序列化器呢？因为比如ProductLine这种枚举类，直接序列化为Json，
  * 并不会使用对应的描述而是使用整个枚举对象，因为我们序列化返回的值是给用户看的。所以我们需要对默认的序列化规则
- * 进行调整。
+ * 进行调整。 泛型是要序列化的对象
  *
  * @author wzy
  * @version V1.0
@@ -24,10 +24,10 @@ public class CouponTemplateSerialize extends JsonSerializer<CouponTemplate> {
     /**
      * 序列化方法
      *
-     * @param template
+     * @param template           要序列号的对象
      * @param generator          json生成器
      * @param serializerProvider
-     * @throws IOException
+     * @throws IOException 抛出异常
      */
     @Override
     public void serialize(CouponTemplate template,

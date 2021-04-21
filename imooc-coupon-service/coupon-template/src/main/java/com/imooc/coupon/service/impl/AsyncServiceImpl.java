@@ -58,7 +58,7 @@ public class AsyncServiceImpl implements IAsyncService {
         // 创建优惠券码
         Set<String> couponCodes = buildCouponCode(template);
 
-        // imooc_coupon_template_code_1
+        // imooc_coupon_template_code_1，构建缓存key
         String redisKey = String.format("%s%s",
                 Constant.RedisPrefix.COUPON_TEMPLATE, template.getId().toString());
 
@@ -138,8 +138,6 @@ public class AsyncServiceImpl implements IAsyncService {
         String suffix8 = RandomStringUtils.random(1, bases)
                 + RandomStringUtils.randomNumeric(7);
 
-
         return mid6 + suffix8;
     }
-
 }

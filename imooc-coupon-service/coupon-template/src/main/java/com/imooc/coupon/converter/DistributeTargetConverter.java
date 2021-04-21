@@ -6,7 +6,7 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
 /**
- * 描述：
+ * 描述：分发目标枚举属性转换类
  *
  * @author wzy
  * @version V1.0

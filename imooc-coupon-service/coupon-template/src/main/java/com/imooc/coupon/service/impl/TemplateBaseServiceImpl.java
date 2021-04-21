@@ -69,20 +69,21 @@ public class TemplateBaseServiceImpl implements ITemplateBaseService {
     /**
      * 将CouponTemplate 转换为CouponTemplateSDK
      *
-     * @param template
-     * @return
+     * @param couponTemplate 优惠券模板对象
+     * @return 优惠券模板SDK对象
      */
-    private CouponTemplateSDK template2TemplateSDK(CouponTemplate template) {
+    private CouponTemplateSDK template2TemplateSDK(CouponTemplate couponTemplate) {
         return new CouponTemplateSDK(
-                template.getId(),
-                template.getName(),
-                template.getLogo(),
-                template.getDescription(),
-                template.getCategory().getCode(),
-                template.getProductLine().getCode(),
-                template.getKey(), //并不是拼装好的 Template key, 没加id
-                template.getTarget().getCode(),
-                template.getRule()
+                couponTemplate.getId(),
+                couponTemplate.getName(),
+                couponTemplate.getLogo(),
+                couponTemplate.getDescription(),
+                couponTemplate.getCategory().getCode(),
+                couponTemplate.getProductLine().getCode(),
+                //并不是拼装好的 Template key, 没加id
+                couponTemplate.getKey(),
+                couponTemplate.getTarget().getCode(),
+                couponTemplate.getRule()
         );
     }
 }

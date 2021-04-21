@@ -6,7 +6,7 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
 /**
- * 描述：产品线枚举属性转换器
+ * <h1>产品线枚举属性转换器</h1>
  *
  * @author wzy
  * @version V1.0
