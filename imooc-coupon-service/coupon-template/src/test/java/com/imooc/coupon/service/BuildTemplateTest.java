@@ -50,6 +50,7 @@ public class BuildTemplateTest {
      */
     private TemplateRequest fakeTemplateRequest() {
         TemplateRequest request = new TemplateRequest();
+        //保证不会重复
         request.setName("优惠券模板-" + new Date().getTime());
         request.setLogo("http://www.baidu.com/");
         request.setDesc("这是一张优惠券模板");

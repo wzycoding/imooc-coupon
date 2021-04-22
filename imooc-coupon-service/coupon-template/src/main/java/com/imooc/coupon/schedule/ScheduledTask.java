@@ -34,7 +34,7 @@ public class ScheduledTask {
     }
 
     /**
-     * 下线过期优惠券模板，每隔60分钟执行一次
+     * <h2>下线过期优惠券模板，每隔60分钟执行一次</h2>
      */
     @Scheduled(fixedRate = 60 * 60 * 1000)
     public void offlineCouponTemplate() {
