@@ -9,7 +9,8 @@ import com.imooc.coupon.vo.SettlementInfo;
 import java.util.List;
 
 /**
- * 描述：用户服务相关的接口定义
+ * <h1>用户服务相关的接口定义</h1>
+ * <p>
  * 1、用户三类状态优惠券信息展示服务
  * 2、查看用户当前可以领取的优惠券模板（是否过期、从来没有领过，可以领多张等情况）
  * 配合coupon-template 微服务
@@ -23,20 +24,22 @@ import java.util.List;
 public interface IUserService {
 
     /**
-     * 根据用户id和状态查询优惠券记录
+     * <h2>根据用户id和状态查询优惠券记录</h2>
      *
      * @param userId 用户id
      * @param status 优惠券状态
-     * @return {@link Coupon}s
+     * @return {@link Coupon} 用户优惠券列表
+     * @throws CouponException 优惠券异常
      */
     List<Coupon> findCouponByStatus(Long userId, Integer status)
             throws CouponException;
 
     /**
-     * 根据用户id查找当前用户可以领取的优惠券模板
+     * <h2>根据用户id查找当前用户可以领取的优惠券模板</h2>
      *
      * @param userId 用户id
      * @return {@link CouponTemplateSDK}s
+     * @throws CouponException 优惠券异常
      */
     List<CouponTemplateSDK> findAvailableTemplate(Long userId)
             throws CouponException;
@@ -47,6 +50,7 @@ public interface IUserService {
      *
      * @param request {@link AcquireTemplateRequest}
      * @return {@link Coupon}
+     * @throws CouponException 优惠券异常
      */
     Coupon acquireTemplate(AcquireTemplateRequest request)
             throws CouponException;
@@ -56,6 +60,7 @@ public interface IUserService {
      *
      * @param info {@link SettlementInfo}
      * @return {@link SettlementInfo}
+     * @throws CouponException 优惠券异常
      */
     SettlementInfo settlement(SettlementInfo info) throws CouponException;
 

@@ -11,14 +11,15 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * 描述：分发微服务的启动入口
+ * <h1>分发微服务的启动入口</h1>
+ * <p>
+ * *@EnableEurekaClient eureka 客户端
+ * *@EnableFeignClients feign调用
+ * *@EnableCircuitBreaker 熔断降级
+ * *@EnableJpaAuditing jap审计
  *
  * @author wzy
  * @version V1.0
- * @EnableEurekaClient eureka 客户端
- * @EnableFeignClients feign调用
- * @EnableCircuitBreaker 熔断降级
- * @EnableJpaAuditing jap审计
  * @date 2020/6/28 13:17
  **/
 @SpringBootApplication
@@ -29,9 +30,9 @@ import org.springframework.web.client.RestTemplate;
 public class DistributionApplication {
 
     /**
-     * 通过RestTemplate可以访问其他接口
-     *
-     * @LoadBalanced 实现负载均衡
+     * <h2>通过RestTemplate可以访问其他接口</h2>
+     * <p>
+     * *@LoadBalanced 实现对多实例负载均衡
      */
     @Bean
     @LoadBalanced

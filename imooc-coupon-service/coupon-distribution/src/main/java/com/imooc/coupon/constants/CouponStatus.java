@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 /**
- * 描述：用户优惠券状态
+ * <h1>用户优惠券状态</h1>
  *
  * @author wzy
  * @version V1.0
@@ -16,6 +16,9 @@ import java.util.stream.Stream;
 @Getter
 @AllArgsConstructor
 public enum CouponStatus {
+    /**
+     * 优惠券状态枚举
+     */
     USABLE("可用的", 1),
     USED("已使用的", 2),
     EXPIRED("过期的(未被使用的)", 3);

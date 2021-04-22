@@ -72,6 +72,4 @@ public class UserServiceController {
         log.info("Settlement: {}", JSON.toJSONString(info));
         return userService.settlement(info);
     }
-
-
 }

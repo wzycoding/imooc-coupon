@@ -42,7 +42,6 @@ public interface IRedisService {
      */
     String tryToAcquireCouponCodeFromCache(Integer templateId);
 
-
     /**
      * 将用户的优惠券信息缓存到redis中
      *
@@ -50,6 +49,7 @@ public interface IRedisService {
      * @param coupons {@link Coupon}s 优惠券列表
      * @param status  状态
      * @return 保存成功的个数
+     * @throws CouponException 抛出异常
      */
     Integer addCouponToCache(Long userId, List<Coupon> coupons,
                              Integer status) throws CouponException;

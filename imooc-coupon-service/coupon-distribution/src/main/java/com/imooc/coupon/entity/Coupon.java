@@ -2,7 +2,7 @@ package com.imooc.coupon.entity;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.imooc.coupon.constants.CouponStatus;
-import com.imooc.coupon.converter.CouponStatusConvertor;
+import com.imooc.coupon.converter.CouponStatusConverter;
 import com.imooc.coupon.serialization.CouponSerialize;
 import com.imooc.coupon.vo.CouponTemplateSDK;
 import lombok.AllArgsConstructor;
@@ -66,7 +66,7 @@ public class Coupon {
      * 优惠券状态
      */
     @Column(name = "status", nullable = false)
-    @Convert(converter = CouponStatusConvertor.class)
+    @Convert(converter = CouponStatusConverter.class)
     private CouponStatus status;
 
     /**

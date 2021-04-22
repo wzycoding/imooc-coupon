@@ -13,7 +13,7 @@ import javax.persistence.Converter;
  * @date 2020/6/28 15:28
  **/
 @Converter
-public class CouponStatusConvertor implements AttributeConverter<CouponStatus, Integer> {
+public class CouponStatusConverter implements AttributeConverter<CouponStatus, Integer> {
     @Override
     public Integer convertToDatabaseColumn(CouponStatus status) {
         return status.getCode();

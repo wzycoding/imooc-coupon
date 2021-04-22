@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 /**
- * 描述：结算信息对象定义
+ * <h1>结算信息对象定义</h1>
  * 包含：
  * 1、userId
  * 2、商品信息（列表）
@@ -38,15 +38,18 @@ public class SettlementInfo {
     private List<CouponAndTemplateInfo> couponAndTemplateInfos;
 
     /**
-     * 是否使结算生效（用于区分是用于结算还是用于核销）
+     * 是否使结算生效（用于区分是用于结算还是用于核销），true核销，false结算
      */
     private Boolean employ;
 
     /**
-     * 结果结算金额
+     * 结果结算金额，通过结算微服务返回结算结果
      */
     private Double cost;
 
+    /**
+     * 优惠券和模板信息
+     */
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
@@ -60,6 +63,5 @@ public class SettlementInfo {
          * 优惠券对应的模板对象
          */
         private CouponTemplateSDK template;
-
     }
 }

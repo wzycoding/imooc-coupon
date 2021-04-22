@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 描述：获取优惠券请求对象定义
+ * <h1>获取优惠券请求对象定义<h1/>
  *
  * @author wzy
  * @version V1.0
