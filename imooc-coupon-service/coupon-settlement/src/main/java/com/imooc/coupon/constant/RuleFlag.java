@@ -13,7 +13,9 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum RuleFlag {
-    // 单类别优惠券进行结算
+    /**
+     * 单类别优惠券进行结算
+     */
     MAJIAN("满减券的计算规则"),
     ZHEKOU("折扣券的计算规则"),
     LIJIAN("立减券的计算规则"),

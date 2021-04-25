@@ -38,7 +38,7 @@ public class CouponClassify {
     private List<Coupon> expired;
 
     /**
-     * 对当前的优惠券进行分类
+     * 对当前的优惠券进行分类，相当于重新对优惠券进行检查
      *
      * @param coupons 优惠券
      */

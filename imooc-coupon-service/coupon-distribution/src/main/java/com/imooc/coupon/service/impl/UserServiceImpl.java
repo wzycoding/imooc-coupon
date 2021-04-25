@@ -132,14 +132,16 @@ public class UserServiceImpl implements IUserService {
                         userId, status);
                 // 会影响两个状态的优惠券USABLE、EXPIRED
                 redisService.addCouponToCache(userId, classify.getExpired(), CouponStatus.EXPIRED.getCode());
+
+                // 发送到Kafka 中做异步处理
+                kafkaTemplate.send(Constant.TOPIC,
+                        JSON.toJSONString(new CouponKafkaMessage(
+                                CouponStatus.EXPIRED.getCode(),
+                                classify.getExpired().stream()
+                                        .map(Coupon::getId).collect(Collectors.toList()))
+                        ));
             }
-            // 发送到Kafka 中做异步处理
-            kafkaTemplate.send(Constant.TOPIC,
-                    JSON.toJSONString(new CouponKafkaMessage(
-                            CouponStatus.EXPIRED.getCode(),
-                            classify.getExpired().stream()
-                                    .map(Coupon::getId).collect(Collectors.toList()))
-                    ));
+
             return classify.getUsable();
         }
         // 如果不是可用状态的优惠券，可以直接返回，只有对过期的优惠券才会延期处理
@@ -149,7 +151,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public List<CouponTemplateSDK> findAvailableTemplate(Long userId)
             throws CouponException {
-        long curTime = new Date().getTime();
+        long curTime = System.currentTimeMillis();
 
         List<CouponTemplateSDK> templateSDKS =
                 templateClient.findAllUsableTemplate().getData();
@@ -176,7 +178,7 @@ public class UserServiceImpl implements IUserService {
 
         // 最终返回的结果
         List<CouponTemplateSDK> result = new ArrayList<>(limit2Template.size());
-        // 用户当前可用优惠券
+        // 用户当前可用优惠券，看是否用户还能领取优惠券
         List<Coupon> userUsableCoupons = findCouponByStatus(
                 userId, CouponStatus.USABLE.getCode()
         );
@@ -186,6 +188,7 @@ public class UserServiceImpl implements IUserService {
         // key是templateId, value用户已经领取的优惠券list,根据模板id进行分组
         Map<Integer, List<Coupon>> templateId2Coupons = userUsableCoupons.stream()
                 .collect(Collectors.groupingBy(Coupon::getTemplateId));
+
         // 根据Template 的Rule判断是否可以领取优惠券模板
         limit2Template.forEach((k, v) -> {
             int limitation = v.getLeft();
@@ -214,6 +217,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public Coupon acquireTemplate(AcquireTemplateRequest request)
             throws CouponException {
+        //获取id -> 优惠券模板信息
         Map<Integer, CouponTemplateSDK> ids2TemplateSDK = templateClient.findIds2TemplateSDK(
                 Collections.singletonList(request.getTemplateSDK().getId())
         ).getData();
@@ -237,6 +241,7 @@ public class UserServiceImpl implements IUserService {
                         .collect(Collectors.groupingBy(Coupon::getTemplateId));
 
         // 判断用户领取是否超出限制 todo:这里的limitation不可信
+
         if (templateId2Coupons.containsKey(request.getTemplateSDK().getId())
                 && templateId2Coupons.get(request.getTemplateSDK().getId()).size() >=
                 request.getTemplateSDK().getRule().getLimitation()) {
@@ -299,9 +304,10 @@ public class UserServiceImpl implements IUserService {
             info.setCost(retain2Decimals(goodsSum));
         }
 
-        // 校验传递的优惠券是不是用户自己的
+        // 校验传递的优惠券是不是用户自己的，这里是优惠券的id
         List<Coupon> coupons = findCouponByStatus(
                 info.getUserId(), CouponStatus.USABLE.getCode());
+
         // 优惠券id -> 优惠券对象 Function.identity()对象本身
         Map<Integer, Coupon> id2Coupon = coupons.stream()
                 .collect(Collectors.toMap(Coupon::getId,
@@ -320,6 +326,7 @@ public class UserServiceImpl implements IUserService {
             throw new CouponException("User Coupon Has Some Problem, It Is Not SubCollection" +
                     "Of Coupons");
         }
+
         log.debug("Current Settlement Coupons Is User's: {}", ctInfos.size());
         // 优惠券id转到优惠券本身
         List<Coupon> settleCoupons = new ArrayList<>(ctInfos.size());
@@ -356,7 +363,7 @@ public class UserServiceImpl implements IUserService {
      */
     private double retain2Decimals(double value) {
         // BigDecimal.ROUND_HALF_UP表示四舍五入
-        return new BigDecimal(value)
+        return BigDecimal.valueOf(value)
                 .setScale(2, BigDecimal.ROUND_HALF_UP)
                 .doubleValue();
     }
