@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.time.DateUtils;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -52,7 +51,7 @@ public class CouponClassify {
         coupons.forEach(c -> {
             // 只有用户查看优惠券的时候才会对优惠券进行判断是否过期，延迟删除
             boolean isTimeExpire;
-            long curTime = new Date().getTime();
+            long curTime = System.currentTimeMillis();
 
             // 是否为固定时间过期,判断优惠券是否过期
             if (c.getTemplateSDK().getRule().getExpiration().getPeriod().equals(

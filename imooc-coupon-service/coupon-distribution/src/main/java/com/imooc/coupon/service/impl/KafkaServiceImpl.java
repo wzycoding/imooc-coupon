@@ -12,7 +12,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,14 +20,14 @@ import java.util.Optional;
 /**
  * 描述：Kafka相关的服务接口实现
  * 核心思想，将Cache中的coupon的状态变化同步到DB中
- * 先修改cache然后在投放到kafka再去修改数据库优惠券状态
+ * 先修改Redis Cache然后在投放到Kafka再去修改数据库优惠券状态
  *
  * @author wzy
  * @version V1.0
  * @date 2020/6/29 14:05
  **/
 @Slf4j
-@Service
+@Component
 public class KafkaServiceImpl implements IKafkaService {
 
     /**
@@ -72,6 +72,8 @@ public class KafkaServiceImpl implements IKafkaService {
                 case EXPIRED:
                     processExpiredCoupons(couponInfo, status);
                     break;
+                default:
+                    break;
             }
         }
     }
@@ -104,6 +106,7 @@ public class KafkaServiceImpl implements IKafkaService {
      */
     private void processCouponsByStatus(CouponKafkaMessage message,
                                         CouponStatus status) {
+        //查出指定的优惠券
         List<Coupon> coupons = couponDao.findAllById(
                 message.getIds()
         );
@@ -115,6 +118,7 @@ public class KafkaServiceImpl implements IKafkaService {
             return;
         }
 
+        //设置要改变的状态
         coupons.forEach(c -> c.setStatus(status));
         log.info("CouponKafkaMessage Op Coupon Count: {}",
                 couponDao.saveAll(coupons).size());

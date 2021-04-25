@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
- * 描述：结算微服务调用的熔断降级实现
+ * <h1>结算微服务调用的熔断降级实现</h1>
  *
  * @author wzy
  * @version V1.0

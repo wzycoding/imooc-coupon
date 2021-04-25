@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
- * 描述：Redis相关的操作服务接口定义
+ * <h1>Redis相关的操作服务接口定义</h1>
  *
  * @author wzy
  * @version V1.0
@@ -30,6 +30,10 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 public class RedisServerImpl implements IRedisService {
+
+    /**
+     * 所有key和value都是String类型
+     */
     private final StringRedisTemplate redisTemplate;
 
     @Autowired
@@ -42,11 +46,14 @@ public class RedisServerImpl implements IRedisService {
         log.info("Get Coupons From Cache: {}, {}", userId, status);
         String redisKey = status2RedisKey(status, userId);
 
-        // couponStr有可能为空
-        List<String> couponStrs = redisTemplate.opsForHash().values(redisKey)
+        // couponStr有可能为空，序列化后的Coupon对象，获取到的都是List<Object>要转化为List<String>
+        List<String> couponStrs = redisTemplate.opsForHash()
+                .values(redisKey)
                 .stream()
                 .map(o -> Objects.toString(o, null))
                 .collect(Collectors.toList());
+
+        //如果为空，则设置空列表，放到广告中
         if (CollectionUtils.isEmpty(couponStrs)) {
             saveEmptyCouponListToCache(userId, Collections.singletonList(status));
             return Collections.emptyList();
@@ -57,7 +64,7 @@ public class RedisServerImpl implements IRedisService {
     }
 
     /**
-     * 避免缓存穿透
+     * 保存用户的空优惠券列表，避免缓存穿透
      *
      * @param userId 用户id
      * @param status 优惠券状态列表
@@ -67,12 +74,13 @@ public class RedisServerImpl implements IRedisService {
     public void saveEmptyCouponListToCache(Long userId, List<Integer> status) {
         log.info("Save Empty List To Cache For User: {}, Status: {}",
                 userId, JSON.toJSONString(status));
+
         // key是couponId, value序列化的Coupon
         Map<String, String> invalidCouponMap = new HashMap<>();
         // 存放无效的优惠券信息
         invalidCouponMap.put("-1", JSON.toJSONString(Coupon.invalidCoupon()));
-        // 使用Redis里的SessionCallback 把数据命令放到Redis的pipeline，pipeline可以一下提交
-        // 多条命令，来减少网络延迟
+
+        // 使用Redis里的SessionCallback 把数据命令放到Redis的pipeline，pipeline可以一下提交，多条命令，来减少网络延迟
         SessionCallback<Object> sessionCallback = new SessionCallback<Object>() {
             @Override
             public Object execute(RedisOperations operations) throws DataAccessException {
@@ -88,7 +96,6 @@ public class RedisServerImpl implements IRedisService {
 
         log.info("Pipeline Exe Result: {}",
                 JSON.toJSONString(redisTemplate.executePipelined(sessionCallback)));
-
     }
 
     @Override
@@ -110,6 +117,7 @@ public class RedisServerImpl implements IRedisService {
                                     Integer status) throws CouponException {
         log.info("Add Coupon To Cache: {}, {}, {}",
                 userId, JSON.toJSONString(coupons), status);
+
         // 保存到缓存中，coupon的个数
         Integer result = -1;
         CouponStatus couponStatus = CouponStatus.of(status);
@@ -123,6 +131,8 @@ public class RedisServerImpl implements IRedisService {
                 break;
             case EXPIRED:
                 result = addCouponToCacheForExpired(userId, coupons);
+                break;
+            default:
                 break;
         }
 
@@ -147,11 +157,13 @@ public class RedisServerImpl implements IRedisService {
                     c.getId().toString(), JSON.toJSONString(c)
             );
         });
-        String redisKey =
-                status2RedisKey(CouponStatus.USABLE.getCode(), userId);
+
+        String redisKey = status2RedisKey(CouponStatus.USABLE.getCode(), userId);
         redisTemplate.opsForHash().putAll(redisKey, needCachedObject);
+
         log.info("Add {} Coupon To Cache: {}, {}",
                 needCachedObject.size(), userId, redisKey);
+
         // 设置随机的过期时间，避免缓存雪崩
         redisTemplate.expire(redisKey,
                 getRandomExpirationTime(1, 2), TimeUnit.SECONDS);
@@ -171,6 +183,7 @@ public class RedisServerImpl implements IRedisService {
     private Integer addCouponToCacheForUsed(Long userId, List<Coupon> coupons)
             throws CouponException {
         log.debug("Add Coupon To Cache For Used.");
+        //初始化集合数量，避免重复扩容
         Map<String, String> needCacheForUsed = new HashMap<>(coupons.size());
 
         String redisKeyForUsable = status2RedisKey(
@@ -182,8 +195,7 @@ public class RedisServerImpl implements IRedisService {
         );
 
         // 获取当前用户可用的优惠券
-        List<Coupon> curUsableCoupons =
-                getCacheCoupons(userId, CouponStatus.USABLE.getCode());
+        List<Coupon> curUsableCoupons = getCacheCoupons(userId, CouponStatus.USABLE.getCode());
 
         // 当前的可用的优惠券个数一定要大于1，因为使用优惠券之前必须存在可用优惠券，
         // 即使不存在，至少有一个无效的优惠券，emptyCoupon id为-1
@@ -232,7 +244,7 @@ public class RedisServerImpl implements IRedisService {
                         TimeUnit.SECONDS
                 );
 
-                // 重置过期时间
+                // 4、重置过期已使用的优惠券的过期时间
                 operations.expire(
                         redisKeyForUsed,
                         getRandomExpirationTime(1, 2),
@@ -244,7 +256,7 @@ public class RedisServerImpl implements IRedisService {
         // 打印日志执行pipeline
         log.info("Pipeline Exe Result: {}",
                 JSON.toJSONString(redisTemplate.executePipelined(sessionCallback)));
-        return needCacheForUsed.size();
+        return coupons.size();
     }
 
     /**
@@ -273,12 +285,14 @@ public class RedisServerImpl implements IRedisService {
 
         List<Coupon> curUsableCoupons = getCacheCoupons(userId, CouponStatus.USABLE.getCode());
 
+        List<Coupon> curExpriedCoupons = getCacheCoupons(userId, CouponStatus.EXPIRED.getCode());
+
         // 当前可用的优惠券个数一定是大于1的,因为有一个无效的优惠券在可用的优惠券里面
         assert curUsableCoupons.size() > coupons.size();
 
         coupons.forEach(c -> needCachedForExpired.put(c.getId().toString(), JSON.toJSONString(c)));
-        // 校验当前的优惠券是否于Cache中的匹配，也就是说过期的优惠券的id在可用优惠券中是否存在
 
+        // 校验当前的优惠券是否于Cache中的匹配，也就是说过期的优惠券的id在可用优惠券中是否存在
         List<Integer> curUsableIds = curUsableCoupons.stream()
                 .map(Coupon::getId).collect(Collectors.toList());
 
@@ -320,7 +334,7 @@ public class RedisServerImpl implements IRedisService {
     }
 
     /**
-     * 根据status获取对应的Redis Key
+     * <h2>根据status获取对应的Redis Key</h2>
      *
      * @param status 状态
      * @param userId 用户id

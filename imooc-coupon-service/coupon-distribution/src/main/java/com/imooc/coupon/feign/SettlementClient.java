@@ -5,9 +5,8 @@ import com.imooc.coupon.feign.hystrix.SettlementClientHystrix;
 import com.imooc.coupon.vo.CommonResponse;
 import com.imooc.coupon.vo.SettlementInfo;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * 描述：优惠券结算微服务 Feign接口定义
@@ -24,9 +23,10 @@ public interface SettlementClient {
      * 优惠券规则计算(计算出最终的价格)
      *
      * @param settlementInfo 入参
+     * @return 结算信息
+     * @throws CouponException 优惠券异常
      */
-    @RequestMapping(value = "/coupon-settlement/settlement/compute",
-            method = RequestMethod.POST)
+    @GetMapping(value = "/coupon-settlement/settlement/compute")
     CommonResponse<SettlementInfo> computeRule(@RequestBody SettlementInfo settlementInfo)
             throws CouponException;
 }
