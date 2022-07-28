@@ -54,7 +54,7 @@ public class BuildTemplateServiceImpl implements IBuildTemplateService {
         // 返回回来的对象有id
         template = couponTemplateDao.save(template);
 
-        // 根据优惠券模板异步生成优惠券码
+        // 创建好优惠券模板之后，就根据优惠券模板异步生成优惠券码
         asyncService.asyncConstructCouponByTemplate(template);
 
         return template;
