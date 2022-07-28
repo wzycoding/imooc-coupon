@@ -38,7 +38,8 @@ public class CouponTemplateController {
     private final ITemplateBaseService templateBaseService;
 
     @Autowired
-    public CouponTemplateController(IBuildTemplateService buildTemplateService, ITemplateBaseService templateBaseService) {
+    public CouponTemplateController(IBuildTemplateService buildTemplateService,
+                                    ITemplateBaseService templateBaseService) {
         this.buildTemplateService = buildTemplateService;
         this.templateBaseService = templateBaseService;
     }
