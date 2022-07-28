@@ -21,11 +21,11 @@ public interface ITemplateBaseService {
      * 根据优惠券模板id获取优惠券模板信息（查看详情接口）
      * [运营人员用]
      *
-     * @param id 模板id
+     * @param templateId 模板id
      * @return {@link CouponTemplate} 优惠券模板实体
      * @throws CouponException 抛出异常
      */
-    CouponTemplate buildTemplateInfo(Integer id) throws CouponException;
+    CouponTemplate buildTemplateInfo(Integer templateId) throws CouponException;
 
     /**
      * 查找所有可用的优惠券模板

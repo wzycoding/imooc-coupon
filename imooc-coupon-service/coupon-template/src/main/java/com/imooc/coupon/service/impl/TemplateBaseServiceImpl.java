@@ -38,10 +38,10 @@ public class TemplateBaseServiceImpl implements ITemplateBaseService {
     }
 
     @Override
-    public CouponTemplate buildTemplateInfo(Integer id) throws CouponException {
-        Optional<CouponTemplate> template = templateDao.findById(id);
+    public CouponTemplate buildTemplateInfo(Integer templateId) throws CouponException {
+        Optional<CouponTemplate> template = templateDao.findById(templateId);
         if (!template.isPresent()) {
-            throw new CouponException("Template Is Not Exist: " + id);
+            throw new CouponException("Template Is Not Exist: " + templateId);
         }
         return template.get();
     }
