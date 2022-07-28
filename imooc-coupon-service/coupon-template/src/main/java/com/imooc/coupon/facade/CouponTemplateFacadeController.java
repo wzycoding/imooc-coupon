@@ -1,6 +1,7 @@
 package com.imooc.coupon.facade;
 
 import com.alibaba.fastjson.JSON;
+import com.imooc.coupon.annotation.IgnorePermission;
 import com.imooc.coupon.service.ITemplateBaseService;
 import com.imooc.coupon.vo.CouponTemplateSDK;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,6 +34,17 @@ public class CouponTemplateFacadeController {
     @Autowired
     public CouponTemplateFacadeController(ITemplateBaseService templateBaseService) {
         this.templateBaseService = templateBaseService;
+    }
+
+    /**
+     * 查找可用的优惠券模板，sdk的含义是给第三方调用
+     * 127.0.0.1:7001/coupon-template/template/sdk/all
+     */
+    @GetMapping("/all")
+    @IgnorePermission
+    public List<CouponTemplateSDK> findAllUsableTemplate() {
+        log.info("Find All Usable Template.");
+        return templateBaseService.findAllUsableTemplate();
     }
 
     /**
